@@ -38,7 +38,7 @@ void generatePPM(const std::string& fileName, int width, int height)
             x *= static_cast<double>(width) / height;
 
             CRTVector rayDir(x, y, -1.0);
-            //side note: while i was fidgeting around with ray directions[rayDir(x,y,0)] i found a cool (almost 3D looking) effect which 
+            //side note: while i was fidgeting around with the ray directions [rayDir(x,y,0)] i found a cool (almost 3D looking) effect which 
             //i also included in the uploaded pictures 
 
             rayDir = rayDir.normalize();
