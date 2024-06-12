@@ -8,7 +8,8 @@ static const int maxColorComponent = 255;
 struct CRTVector {
     double x, y, z;
 
-    CRTVector(double x_ = 0, double y_ = 0, double z_ = 0) : x(x_), y(y_), z(z_) {}
+    // I removed the default values from the constructor
+    CRTVector(double x_, double y_, double z_) : x(x_), y(y_), z(z_) {}
 
     CRTVector normalize() const 
     {
@@ -48,6 +49,10 @@ void generatePPM(const std::string& fileName, int width, int height)
             int g = (rayDir.y + 1.0) * 0.5 * maxColorComponent; 
             int b = (rayDir.z + 1.0) * 0.5 * maxColorComponent;
 
+            //adding this for safety to ensure they stay within the valid range of 0 to 255.
+            r = std::max(0, std::min(maxColorComponent, r));
+            g = std::max(0, std::min(maxColorComponent, g));
+            b = std::max(0, std::min(maxColorComponent, b));
             
             ppmFileStream << r << " " << g << " " << b << "\t";
         }
